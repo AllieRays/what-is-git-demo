@@ -21,8 +21,8 @@ $ git branch -a
 To work on our changes locally, check out the remote branch `JIRA-005-merge-conflict`. Then checkout the branch `JIRA-005-merge-conflict-two`
 
 ```
-$ git checkout JIRA-005-merge-conflict
-$ git checkout JIRA-005-merge-conflict-two
+$ git checkout -b  JIRA-005-merge-conflict origin/JIRA-005-merge-conflict
+$ git checkout -b JIRA-005-merge-conflict-two origin/JIRA-005-merge-conflict-two
 ```
 
 ### Step Four: Rebase your two branches. 
@@ -108,3 +108,23 @@ Review your code changes \
 Review the base branch is AllieRays:master \
 Create a PR \
 Review [github's documentation about pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) if you need more help with creating a PR.
+
+
+
+
+## Other Troubleshooting techniques.
+
+If you are having trouble with merge conflicts you can always reset your local to your upstream. \
+For example. 
+
+git checkout master 
+git reset --hard upstream/master
+
+git checkout -b  JIRA-005-merge-conflict origin/JIRA-005-merge-conflict
+git reset --hard upstream/JIRA-005-merge-conflict
+git push origin JIRA-005-merge-conflict origin -f
+
+git checkout -b  JIRA-005-merge-conflict-two origin/JIRA-005-merge-conflict-two
+git reset --hard upstream/JIRA-005-merge-conflict-two
+git push origin JIRA-005-merge-conflict-two origin -f
+
