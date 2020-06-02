@@ -4,6 +4,12 @@ As a developer I want to manage code conflicts so that I know how to manage my c
 
 ## Exercise 
 
+In case there were any changes that are not reflected in your upstream, local and origin reset your repo. 
+```
+$ git reset --hard upstream
+$ git push origin --all -f
+```
+
 ### Step One: Fetch all branches 
 The git fetch command downloads commits, files, and refs from a remote repository into your local repo. \
 You use fetch to see what the rest of your team is working on and to ensure you have all the latest locally. 
@@ -21,13 +27,13 @@ $ git branch -a
 To work on our changes locally, check out the remote branch `JIRA-005-merge-conflict`. Then checkout the branch `JIRA-005-merge-conflict-two`
 
 ```
-$ git checkout -b  JIRA-005-merge-conflict origin/JIRA-005-merge-conflict
-$ git checkout -b JIRA-005-merge-conflict-two origin/JIRA-005-merge-conflict-two
+$ git checkout -b JIRA-005-merge-conflict-example upstream/JIRA-005-merge-conflict-example
+$ git checkout -b JIRA-005-merge-conflict-example-two upstream/JIRA-005-merge-conflict-example-two
 ```
 
 ### Step Four: Rebase your two branches. 
 Since it will be common that other developers on your team will be working on the same code we always want to rebase from the latest. 
-In this case we will use the two branches provided in this repo. `JIRA-005-merge-conflict` and `JIRA-005-merge-conflict-two`. 
+In this case we will use the two branches provided in this repo. `JIRA-005-merge-conflict-example` and `JIRA-005-merge-conflict-example-two`. 
 ```
 $ git rebase JIRA-005-merge-conflict
 ```
