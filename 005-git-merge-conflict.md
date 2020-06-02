@@ -117,6 +117,7 @@ Review [github's documentation about pull requests](https://help.github.com/en/g
 If you are having trouble with merge conflicts you can always reset your local to your upstream. \
 For example. 
 
+```
 git checkout master 
 git reset --hard upstream/master
 
@@ -127,4 +128,4 @@ git push origin JIRA-005-merge-conflict origin -f
 git checkout -b  JIRA-005-merge-conflict-two origin/JIRA-005-merge-conflict-two
 git reset --hard upstream/JIRA-005-merge-conflict-two
 git push origin JIRA-005-merge-conflict-two origin -f
-
+```
