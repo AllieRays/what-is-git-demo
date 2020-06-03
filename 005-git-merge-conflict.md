@@ -8,6 +8,8 @@ In case there were any changes from the upstream that are not reflected in your 
 * note do this with caution on other projects as it will destroy git history.
 
 ```
+$ git branch -d JIRA-005-merge-conflict
+$ git branch -d JIRA-005-merge-conflict-two
 $ git reset --hard upstream
 $ git push origin --all -f
 ```
