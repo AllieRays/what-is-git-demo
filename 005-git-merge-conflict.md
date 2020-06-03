@@ -37,7 +37,7 @@ $ git checkout -b JIRA-005-merge-conflict-example-two upstream/JIRA-005-merge-co
 Since it will be common that other developers on your team will be working on the same code we always want to rebase from the latest. 
 In this case we will use the two branches provided in this repo. `JIRA-005-merge-conflict-example` and `JIRA-005-merge-conflict-example-two`. 
 ```
-$ git rebase JIRA-005-merge-conflict
+$ git rebase JIRA-005-merge-conflict-example
 ```
 
 You should see something along the lines
