@@ -4,7 +4,9 @@ As a developer I want to manage code conflicts so that I know how to manage my c
 
 ## Exercise 
 
-In case there were any changes that are not reflected in your upstream, local and origin reset your repo. 
+In case there were any changes from the upstream that are not reflected in your local and origin reset your repo. \
+* note do this with caution on other projects as it will destroy git history.
+
 ```
 $ git reset --hard upstream
 $ git push origin --all -f
@@ -67,9 +69,9 @@ You should see something along the lines
 ### Step Five: Review your merge conflicts 
 ```
 <<<<<<< HEAD
-The purpose of this file is only to demonstrate a git merge conflict. On branch JIRA-005-merge-conflict this file was updated.
+The purpose of this file is only to demonstrate a git merge conflict. On branch JIRA-005-merge-conflict-example this file was updated.
 =======
-The purpose of this file is only to demonstrate a git merge conflict. On branch JIRA-005-merge-conflict-two this file was also updated.
+The purpose of this file is only to demonstrate a git merge conflict. On branch JIRA-005-merge-conflict-example-two this file was also updated.
 >>>>>>> JIRA-005: Merge conflict exercise part two.
 
 ```
