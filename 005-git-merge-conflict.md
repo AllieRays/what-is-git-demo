@@ -29,16 +29,23 @@ $ git branch -a
 ```
 
 ### Step Three: Check out the remote feature branch
-To work on our changes locally, check out the remote branch `JIRA-005-merge-conflict`. Then checkout the branch `JIRA-005-merge-conflict-two`
+To work on our changes locally, check out the remote branch `JIRA-005-merge-conflict-example`. Then checkout the branch `JJIRA-005-merge-conflict-example-two`
 
 ```
-$ git checkout -b JIRA-005-merge-conflict-example upstream/JIRA-005-merge-conflict-example
-$ git checkout -b JIRA-005-merge-conflict-example-two upstream/JIRA-005-merge-conflict-example-two
+$ git checkout -b JIRA-005-merge-conflict-example origin/JIRA-005-merge-conflict-example
+$ git checkout -b JIRA-005-merge-conflict-example-two origin/JIRA-005-merge-conflict-example-two
 ```
 
 ### Step Four: Rebase your two branches. 
-Since it will be common that other developers on your team will be working on the same code we always want to rebase from the latest. 
-In this case we will use the two branches provided in this repo. `JIRA-005-merge-conflict-example` and `JIRA-005-merge-conflict-example-two`. 
+Since it will be common that other developers on your team will be working on the same code we always want to rebase from the latest. \
+In this case we will use the two branches provided in this repo. `JIRA-005-merge-conflict-example` and `JIRA-005-merge-conflict-example-two`. \
+Double check you are on the JIRA-005-merge-conflict-example-two branch
+```
+$ git branch 
+```
+This should return `JIRA-005-merge-conflict-example-two` \
+Then rebase the first branch.
+
 ```
 $ git rebase JIRA-005-merge-conflict-example
 ```
