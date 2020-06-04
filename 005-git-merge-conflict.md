@@ -89,8 +89,8 @@ The HEAD revision changes to point to the tip of the new branch.
 ### Step Six: Fix your conflicts
 Review what changes you need to make. Git will only ever know that changes occurred. \
 It is up to the developer to determine what needs to stay or be removed. \
-For the purposes of this demo we are going to say the commit from ` JIRA-005: Merge conflict exercise part two.` \
-Is the most current code changes that we want to keep. \ 
+For the purposes of this demo we are going to say the commit from `JIRA-005: Merge conflict exercise part two.` \
+Is the most current code changes that we want to keep. 
 
 Therefore, remove everything between `<<<<<<< HEAD and =======`.  Also remove the git message `>>>>>>> JIRA-005: Merge conflict exercise part two.` \
 Go back to your terminal and type 
@@ -102,17 +102,17 @@ Add these changes, continue your rebase and force push to your origin.
 ```
 $ git add . 
 $ git rebase --continue
-$ git push origin -f
+$ git push origin JIRA-005-merge-conflict-example-two -f
 ```
 
 Try to rebase again 
 ```
-$ git rebase JIRA-005-merge-conflict-example-two
+$ git rebase JIRA-005-merge-conflict-example
 ```
 
 You should see a message along the lines of 
 ```
-[allierays/what-is-git-demo (JIRA-005-merge-conflict)]$ git rebase origin/JIRA-005-merge-conflict-two
+[allierays/what-is-git-demo (JIRA-005-merge-conflict-example)]$ git rebase origin/JIRA-005-merge-conflict-example-two
 Current branch JIRA-005-merge-conflict-example-two is up to date.
 ```
 
