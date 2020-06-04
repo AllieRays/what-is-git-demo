@@ -52,3 +52,4 @@ e -    manually edit the current hunk
 https://www.atlassian.com/git/tutorials/making-a-pull-request
 https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow
 https://www.atlassian.com/git/tutorials/using-branches
+https://backlog.com/git-tutorial/
