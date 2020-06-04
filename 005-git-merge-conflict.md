@@ -4,14 +4,15 @@ As a developer I want to manage code conflicts so that I know how to manage my c
 
 ## Exercise 
 
-In case there were any changes from the upstream that are not reflected in your local and origin reset your repo. \
-* note do this with caution on other projects as it will destroy git history.
-
+Prerequisites: Make sure you do Exercise two: https://github.com/AllieRays/what-is-git-demo/blob/master/002-fork-a-repo.md \
+Check that you have both your origin and upstream remote git repositiories. \
+It should look similar to:
 ```
-$ git branch -d JIRA-005-merge-conflict
-$ git branch -d JIRA-005-merge-conflict-two
-$ git reset --hard upstream
-$ git push origin --all -f
+[allierays/what-is-git-demo (master)]$ git remote -v
+origin	git@github.com:[your-github-name]/what-is-git-demo.git (fetch)
+origin	git@github.com:[your-github-name]/what-is-git-demo.git (push)
+upstream	git@github.com:AllieRays/what-is-git-demo.git (fetch)
+upstream	git@github.com:AllieRays/what-is-git-demo.git (push)
 ```
 
 ### Step One: Fetch all branches 
@@ -45,27 +46,25 @@ $ git rebase JIRA-005-merge-conflict-example
 You should see something along the lines
  
  ```
- [allierays/what-is-git-demo (JIRA-005-merge-conflict|REBASE 1/1)]$ git status
- rebase in progress; onto cc06a94
- You are currently rebasing branch 'JIRA-005-merge-conflict' on 'cc06a94'.
-   (fix conflicts and then run "git rebase --continue")
-   (use "git rebase --skip" to skip this patch)
-   (use "git rebase --abort" to check out the original branch)
- 
- Unmerged paths:
-   (use "git reset HEAD <file>..." to unstage)
-   (use "git add <file>..." to mark resolution)
- 
- 	both modified:   005b-git-merge-conflict.md
- 
- Changes not staged for commit:
-   (use "git add <file>..." to update what will be committed)
-   (use "git checkout -- <file>..." to discard changes in working directory)
- 
- 	modified:   005-git-merge-conflict.md
- 
- no changes added to commit (use "git add" and/or "git commit -a")
- 
+ First, rewinding head to replay your work on top of it...
+Applying: JIRA-005: Example number two of a merge conflict.
+
+Using index info to reconstruct a base tree...
+M	005b-git-merge-conflict.md
+Falling back to patching base and 3-way merge...
+
+Auto-merging 005b-git-merge-conflict.md
+
+CONFLICT (content): Merge conflict in 005b-git-merge-conflict.md
+error: Failed to merge in the changes.
+Patch failed at 0001 JIRA-005: Example number two of a merge conflict.
+hint: Use 'git am --show-current-patch' to see the failed patch
+
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+
  ```
 
 ### Step Five: Review your merge conflicts 
@@ -74,7 +73,7 @@ You should see something along the lines
 The purpose of this file is only to demonstrate a git merge conflict. On branch JIRA-005-merge-conflict-example this file was updated.
 =======
 The purpose of this file is only to demonstrate a git merge conflict. On branch JIRA-005-merge-conflict-example-two this file was also updated.
->>>>>>> JIRA-005: Merge conflict exercise part two.
+>>>>>>> JIRA-005: Example number two of a merge conflict.
 
 ```
 You can think of the HEAD as the "current branch". When you switch branches with git checkout. \
@@ -92,24 +91,23 @@ Go back to your terminal and type
 $ git status
 ```
 Notice there are changes to the 005b-git-merge-conflict.md file.\
-Add and commit these changes. 
+Add these changes, continue your rebase and force push to your origin.
 ```
 $ git add . 
-$ git commit -m"JIRA-005: Resolving merge conflict for merge file."
 $ git rebase --continue
+$ git push origin -f
 ```
 
 Try to rebase again 
 ```
-$ git rebase JIRA-005-merge-conflict-two
+$ git rebase JIRA-005-merge-conflict-example-two
 ```
 
 You should see a message along the lines of 
 ```
 [allierays/what-is-git-demo (JIRA-005-merge-conflict)]$ git rebase origin/JIRA-005-merge-conflict-two
-Current branch JIRA-005-merge-conflict is up to date.   
+Current branch JIRA-005-merge-conflict-example-two is up to date.
 ```
-
 
 ### Step Seven: Create a PR
 Go to your github repo \
@@ -128,14 +126,8 @@ If you are having trouble with merge conflicts you can always reset your local t
 For example. 
 
 ```
-git checkout master 
-git reset --hard upstream/master
-
-git checkout -b  JIRA-005-merge-conflict origin/JIRA-005-merge-conflict
-git reset --hard upstream/JIRA-005-merge-conflict
-git push origin JIRA-005-merge-conflict origin -f
-
-git checkout -b  JIRA-005-merge-conflict-two origin/JIRA-005-merge-conflict-two
-git reset --hard upstream/JIRA-005-merge-conflict-two
-git push origin JIRA-005-merge-conflict-two origin -f
+$ git fetch --all
+$ git checkout master 
+$ git reset --hard upstream/master
+$ git push origin 
 ```
